@@ -222,7 +222,7 @@ These credentials are for demonstration purposes only.
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/campusconnect-college-management-portal.git
+git clone https://github.com/prachibhardwaj460/campusconnect-college-management-portal.git
 ```
 
 ### Step 2
