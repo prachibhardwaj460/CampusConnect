@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-body">
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>CampusConnect</h2>
+                <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="sidebar-user" id="sidebarUser">
+                <!-- Injected via JS -->
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav">
+                <!-- Navigation Links injected via JS based on role -->
+            </nav>
+        </aside>
+
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="globalSearch" placeholder="Search students, subjects, events...">
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <button class="icon-btn theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="notification-wrapper">
+                        <button class="icon-btn" id="notifToggle" title="Notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge-count">3</span>
+                        </button>
+                        <div class="dropdown-menu notif-menu" id="notifMenu">
+                            <div class="dropdown-header">Notifications</div>
+                            <div class="dropdown-content" id="notifList">
+                                <!-- Dummy notifs -->
+                                <div class="notif-item unread">
+                                    <i class="fas fa-bullhorn text-primary"></i>
+                                    <div>
+                                        <p>New Assignment posted in CS101</p>
+                                        <span>2 mins ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer"><a href="#notifications">View All</a></div>
+                        </div>
+                    </div>
+                    <div class="profile-wrapper">
+                        <button class="profile-btn" id="profileToggle">
+                            <img src="https://ui-avatars.com/api/?name=User&background=random" id="topbarAvatar" alt="Profile">
+                            <span id="topbarName">User</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu profile-menu" id="profileMenu">
+                            <a href="#profile"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                            <div class="divider"></div>
+                            <a href="#" id="logoutBtn" class="text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dynamic Content Area -->
+            <main class="content-area" id="appContent">
+                <!-- Content injected here via routing -->
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/store.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/views/student.js"></script>
+    <script src="js/views/teacher.js"></script>
+    <script src="js/views/admin.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

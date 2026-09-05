@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-header">
+            <i class="fas fa-graduation-cap fa-3x" style="color: var(--primary);"></i>
+            <h1>CampusConnect</h1>
+            <p>College Management Portal</p>
+        </div>
+        <form id="loginForm" class="login-form">
+            <div id="loginError" class="alert alert-danger" style="display: none;"></div>
+            
+            <div class="form-group">
+                <label for="email">Email / Username</label>
+                <div class="input-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="email" id="email" required placeholder="Enter your email">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" required placeholder="Enter your password">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="role">Select Role</label>
+                <div class="input-icon">
+                    <i class="fas fa-users-cog"></i>
+                    <select id="role" required>
+                        <option value="student">Student</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="remember">
+                    <span class="checkmark"></span>
+                    Remember me
+                </label>
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">Login to Portal</button>
+        </form>
+        
+        <div class="demo-credentials">
+            <h3>Demo Credentials</h3>
+            <div class="credential-item" onclick="fillDemo('student@campusconnect.local', 'student123', 'student')">
+                <span class="badge badge-student">Student</span> student@campusconnect.local / student123
+            </div>
+            <div class="credential-item" onclick="fillDemo('teacher@campusconnect.local', 'teacher123', 'teacher')">
+                <span class="badge badge-teacher">Teacher</span> teacher@campusconnect.local / teacher123
+            </div>
+            <div class="credential-item" onclick="fillDemo('admin@campusconnect.local', 'admin123', 'admin')">
+                <span class="badge badge-admin">Admin</span> admin@campusconnect.local / admin123
+            </div>
+        </div>
+    </div>
+
+    <script src="js/store.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Store.init();
+            if(Auth.isLoggedIn()) {
+                window.location.href = 'dashboard.html';
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+            const errorDiv = document.getElementById('loginError');
+
+            if(Auth.login(email, password, role)) {
+                window.location.href = 'dashboard.html';
+            } else {
+                errorDiv.textContent = 'Invalid credentials or role mismatch.';
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        function fillDemo(email, password, role) {
+            document.getElementById('email').value = email;
+            document.getElementById('password').value = password;
+            document.getElementById('role').value = role;
+        }
+    </script>
+</body>
+</html>
